@@ -1,13 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./styles/GlobalStyles";
+import FontStyles from "./styles/fontStyles";
+
+const theme = {
+  colors: {
+    main: "#d9c1bb",
+    darkMain: "#D6CCC2",
+    linen: "#F5EBE0",
+    darker: "#A1869E",
+    magnolia: "#F7F0F5",
+    grey: "#565254",
+  },
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <FontStyles />
+      <GlobalStyle />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
